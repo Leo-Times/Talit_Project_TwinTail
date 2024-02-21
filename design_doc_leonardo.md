@@ -12,7 +12,7 @@ The transmission station consists of a steering wheel connected to the box via a
 
 <img src='img/wheel.png'> 
 
-The steering wheel will be designed in CAD and then 3D printed.
+The steering wheel will be custom designed in CAD and then 3D printed.
 
 ##### basic dimensions 
 
@@ -52,6 +52,13 @@ Requirements {} => Things required
 - chassis (2 weeks) {req: parts}
 - Final touches (1-4 weeks) {req: all}
 - Something goes wrong time (2-8 weeks) {req: smth goes wrong :( }
+
+## Electronic Design Answers
+
+- The reciever would be replaced so that fine custom control can be programmed into the arduino based reciever. This wouldn't be possible with the original reciever.
+- The video transmission is completly seperate from the arduino based transmission. (fpv camera comes with a transmittor -> read with fpv reciever)
+- Failsafes will be added to ensure reliability. e.g. if connection is lost the motor cuts off, bringing a car to a stop.
+- Testing should be done on the stock car, on a zig-zag track to test latency. And then with the modifications the car should still be able to do the zig-zag test. 
 
 ## Milestones
 
