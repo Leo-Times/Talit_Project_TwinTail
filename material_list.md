@@ -18,3 +18,7 @@
 | FPV Camera | 1 | CHF 18 | https://usa.banggood.com/Eachine-TX02-FPV-Transmitter-NTSC-Super-Mini-AIO-5_8G-40CH-200mW-VTX-600TVL-1-or-4-Cmos-Camera-for-RC-Drone-p-1088368.html?cur_warehouse=CN |
 | FPV Camera Reciever | 1 | - | - |
 | Materials tbd | - | - | - |
+
+
+Probable Budget: ~CHF 400
+Max Budget needed: CHF 500
