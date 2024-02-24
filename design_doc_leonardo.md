@@ -68,3 +68,7 @@ Requirements {} => Things required
 - First Run
 - Runs # Project Twintail
 
+## Dates
+
+- First weeks b4 material arrives design the parts and start printing them.
+
