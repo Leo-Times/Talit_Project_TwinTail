@@ -70,5 +70,8 @@ Requirements {} => Things required
 
 ## Dates
 
-- First weeks b4 material arrives design the parts and start printing them.
+- By 04/03/2024 have the technical drawing of the transmittor base.
+- By 18/03/2024 have printed the steering wheel
+- By 08/03/2024 have the transmittor module hardware done.
+- ... Depends on material arrival ... 
 
