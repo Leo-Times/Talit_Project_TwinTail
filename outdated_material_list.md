@@ -1,4 +1,4 @@
-# Material List (Not Final)
+# Material List (Not Final) (OUTDATED) (DO NOT USE IT)
 
 | Name | Amount | Price | Link |
 | -------------------------- | - | --- | ---------------------------------------------------------------------------|
