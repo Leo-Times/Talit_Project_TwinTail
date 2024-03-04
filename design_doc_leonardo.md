@@ -71,7 +71,7 @@ Requirements {} => Things required
 ## Dates
 
 - By 11/03/2024 have the technical drawing of the transmittor base.
-- By 18/03/2024 have printed the steering wheel
+- By 01/04/2024 have printed the steering wheel
 - By 08/03/2024 have the transmittor module hardware done.
 - ... Depends on material arrival ... 
 
