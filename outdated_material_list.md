@@ -1,4 +1,4 @@
-![image](https://github.com/Leo-Times/Talit_Project_TwinTail/assets/126081345/4ae283a6-4a9c-4834-8951-234d454b546a)# Material List 
+# Material List 
 
 
 ## School Buy
