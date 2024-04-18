@@ -14,10 +14,10 @@
 
 | Status | Name | Amount | Price | Link |
 | --------- | -------------------------- | - | --- | ---- |
-| TBP | Arduino Pro Mini | 1 (3) | €17 | https://www.amazon.de/gp/product/B09Z29T62F/ref=ox_sc_act_title_4?smid=A3LA1TDA4Q3SUA&psc=1 |
-| TBP | NRF24L01+PA+LNA | 1 (3) | €10.08 | https://www.amazon.de/ICQUANZX-Wireless-Transceiver-Antistatischer-Kompatibel/dp/B07VQ838KT/ref=cm_cr_arp_d_product_top?ie=UTF8 |
-| TBP | Rectangular Magnets | 1 (100) | €13.44 | https://www.amazon.de/MIN-CI-Rechteckige-Magnettafel-K%C3%BChlschrank/dp/B09XHYLDGQ/ref=pd_ci_mcx_pspc_dp_d_2_i_1?pd_rd_w=aydqM&content-id=amzn1.sym.7838253a-f0cb-4765-8290-3a5e015d7ac1&pf_rd_p=7838253a-f0cb-4765-8290-3a5e015d7ac1&pf_rd_r=9FP9ERXQJFGPCPFN31WH&pd_rd_wg=fk75d&pd_rd_r=146ed219-d63b-497d-8c15-2e9ea34f0590&pd_rd_i=B09XHYLDGQ |
-| TBP | PCB | 1 (5) | 3.15 | See .gerber file |
+| Purchased | Arduino Pro Mini | 1 (3) | €17 | https://www.amazon.de/gp/product/B09Z29T62F/ref=ox_sc_act_title_4?smid=A3LA1TDA4Q3SUA&psc=1 |
+| Purchased | NRF24L01+PA+LNA | 1 (3) | €10.08 | https://www.amazon.de/ICQUANZX-Wireless-Transceiver-Antistatischer-Kompatibel/dp/B07VQ838KT/ref=cm_cr_arp_d_product_top?ie=UTF8 |
+| Purchased | Rectangular Magnets | 1 (100) | €13.44 | https://www.amazon.de/MIN-CI-Rechteckige-Magnettafel-K%C3%BChlschrank/dp/B09XHYLDGQ/ref=pd_ci_mcx_pspc_dp_d_2_i_1?pd_rd_w=aydqM&content-id=amzn1.sym.7838253a-f0cb-4765-8290-3a5e015d7ac1&pf_rd_p=7838253a-f0cb-4765-8290-3a5e015d7ac1&pf_rd_r=9FP9ERXQJFGPCPFN31WH&pd_rd_wg=fk75d&pd_rd_r=146ed219-d63b-497d-8c15-2e9ea34f0590&pd_rd_i=B09XHYLDGQ |
+| Purchased | PCB | 1 (5) | 3.15 | See .gerber file |
 | TBD | FPV Camera | 1 | - | - |
 | TBD | FPV Reciver | 1 | - | - |
 | TBD | Pipe 4cm wide | 1 | - | - |
