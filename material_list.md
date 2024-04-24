@@ -6,7 +6,7 @@
 | Status | Name | Amount | Price | Link |
 | --------- | -------------------------- | - | --- | ---- |
 | Delivered | Rotary Encoder | 1 | 2.45 | https://www.conrad.ch/de/p/joy-it-com-ky040re-sensorkit-1-st-1695709.html |
-| TBP | Voltage Regulator | 2 | 0.83 | https://www.distrelec.ch/en/ldo-voltage-regulator-3v-200ma-sot-89-torex-xc6706c331pr/p/30400180?trackQuery=Voltage%20Regulator%203.3v&pos=1&origPos=1&origPageSize=50&track=true&sid=7c134d8023064ecf5d36eaf9fa2ea868076fcc10&itemList=search |
+| TBP | Voltage Regulator | 2 | 0.83 | https://www.distrelec.ch/en/ldo-voltage-regulator-3v-800ma-sot-223-st-ld1117s33tr/p/30170563?srsltid=AfmBOoqS1jRs7y8uxbUV5umbtAjn_BUEK36EawuUo70h9gYrOxXY-pGx3kw |
 | TBP | Buttons | 4 | 3.39 | https://www.adafruit.com/product/491 |
 | Delivered | Neodymium magnets 8x5mm | 4 | 1.26 | https://www.distrelec.ch/en/bar-magnet-neodymium-4mm-sura-magnets-na35-008/p/13752748?trackQuery=cat-DNAV_PL_05020806&pos=8&origPos=1 |
 
