@@ -21,8 +21,8 @@
 | Delivered | PCB | 1 (5) | 3.15 | See .gerber file |
 | TBD | FPV Camera | 1 | - | https://www.amazon.com/gp/product/B06XB2ZRBP/ref=ox_sc_act_title_2?smid=A1738MU39IWURM&psc=1 |
 | TBD | FPV Reciver | 1 | - | https://www.amazon.com/gp/product/B08GZBTQV3/ref=ox_sc_act_title_1?smid=A3BKS5ISMXVHBW&psc=1 |
-| TBD | Pipe 4cm wide | 1 | - | - |
-| TBD | Ball bearing 4cm inner | 1 (4) | €13.03 | https://www.amazon.de/sourcing-map-Rillenkugellager-Innendurchm-Au%C3%9Fendurchm/dp/B0834RF845/ref=sr_1_1?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=V30R4LTIMX9E&dib=eyJ2IjoiMSJ9.bWHCZ9fKZRXDz5n0YUoErWVcTlk9boUFN3fueENFfpp90uT3kH1WwgnjggULGqa-ZO2pZyF6_Go9rM0YkUMuOZhQKv2e5MiUAkD8sz2dNj9MUt0uDwvJWQQnVMIyyDEdtOLf3p1gjLFzCo5nJ2Jc5n7GklbyZtaTXRor3j_JYvNyoTou4K_kF_PE1VRv_CPeOKzRj2QSSO2djYlkOZpZCzzPHis1cGwqZLPpDKLELt4.1JpGpEsbpBLA86YuHYcs3JRTIW3CS3ju0kkd7KVtCk4&dib_tag=se&keywords=ball+bearing+40mm&qid=1710835272&sprefix=ball+bearing+40mm%2Caps%2C151&sr=8-1 |
+| Gotten | Pipe 2.7cm | 1 | - | - |
+| TBD | Ball bearing 2.7cm inner |  |  |  |
 | TBD | Break Spring | 1 | - | - |
 | TBD | Accelerator Spring | 1 | - | - |
 | TBD | RC Car | 1 | - | https://www.amazon.de/HYPER-GO-Brushless-Erwachsene-schneller/dp/B0CBMVT32F?shipTo=CH&source=ps-sl-shoppingads-lpcontext&ref_=fplfs&psc=1&smid=AENESPPY42O1O |
