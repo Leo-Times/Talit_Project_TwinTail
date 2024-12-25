@@ -1,0 +1,47 @@
+volatile int counter = 20000;  // Use int since unsigned int is unnecessary
+int temp = 20000;             // Temporary variable to track changes
+int angle;
+
+void setup() {
+  Serial.begin(115200);
+  pinMode(2, INPUT_PULLUP);  // Pin 2 for Interrupt 0 (A signal)
+  pinMode(3, INPUT_PULLUP);  // Pin 3 for Interrupt 1 (B signal)
+
+  // Attach interrupts to pins 2 and 3
+  attachInterrupt(digitalPinToInterrupt(2), ai0, RISING);
+  attachInterrupt(digitalPinToInterrupt(3), ai1, RISING);
+}
+
+void loop() {
+  noInterrupts();
+  int localCounter = counter;
+  interrupts();
+  if (localCounter != temp) {
+    angle = map(localCounter, 19400, 20600, 50, 130);
+    temp = localCounter;
+
+    // Send angle as a clear string
+    Serial.println(angle);
+  }
+
+  delay(10);
+}
+
+
+// Interrupt Service Routine for A signal
+void ai0() {
+  if (digitalRead(3) == LOW) {  // Check B signal state
+    counter++;
+  } else {
+    counter--;
+  }
+}
+
+// Interrupt Service Routine for B signal
+void ai1() {
+  if (digitalRead(2) == LOW) {  // Check A signal state
+    counter--;
+  } else {
+    counter++;
+  }
+}
