@@ -1,0 +1,273 @@
+#include <LiquidCrystal_I2C.h>
+#include <nRF24L01.h>
+#include <RF24.h>
+
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+
+#define accelPin A2
+#define breakPin A3
+#define brbalPin A6
+#define strimPin A0
+#define stratPin A7
+#define neutralPin 4
+#define pitPin 9
+#define autoPin 5
+#define manualPin 8
+#define downshiftPin 7
+#define upshiftPin 6
+
+RF24 radio(3, 2);   // nRF24L01 (CE, CSN)
+const byte address[6] = "00111";
+
+struct Data_Pack{
+  int speed;
+  byte steering;
+};
+
+Data_Pack data;
+
+float accelPer; 
+float breakPer; 
+bool pit = true;
+bool neutral = true;
+bool transmittionMan = false;
+
+int strat = 6;
+int brbal = 0;
+int strim = 0;
+int prestrat;
+int prebrbal;
+int prestrim;
+
+int angle = 90;
+int gear = 0;
+int agear = 0;
+int speed = 1402;
+int engineBraking = 2;
+float brakeing = 20;
+
+int settings[8][3] = {
+  {1405, 1405, 0},
+  {1410, 1450, 10},
+  {1440, 1500, 9},
+  {1490, 1584, 8},
+  {1585, 1600, 7},
+  {1590, 1650, 6},
+  {1640, 1700, 5},
+  {1690, 1750, 4}
+};
+
+int stratList[10][2] = {
+  {0, 0},
+  {0, 0},
+  {0, 0},
+  {0, 0},
+  {0, 0},
+  {0, 0},
+  {200, 4},
+  {0, 0},
+  {0, 0},
+  {0, 0}
+};
+
+String message = ""; 
+
+void setup() {
+  pinMode(upshiftPin, INPUT_PULLUP);
+  pinMode(downshiftPin, INPUT_PULLUP);
+
+  pinMode(neutralPin, INPUT_PULLUP);
+  pinMode(pitPin, INPUT_PULLUP);
+  pinMode(autoPin, INPUT_PULLUP);
+  pinMode(manualPin, INPUT_PULLUP);
+
+  Serial.begin(115200); 
+  lcd.init();
+  lcd.backlight();
+  lcd.setCursor(0, 0);
+
+  radio.begin();
+  radio.openReadingPipe(0, address);
+  radio.setAutoAck(false);
+  radio.setDataRate(RF24_250KBPS);
+  radio.setPALevel(RF24_PA_LOW);
+  radio.stopListening(); //  Set the module as transmittor
+}
+
+void loop() {
+  if (Serial.available() > 0) { // Check if data is available to read
+    String receivedMessage = Serial.readStringUntil('\n'); // Read the incoming message
+    angle = (receivedMessage.toInt());
+    delay(10);
+  }
+
+
+  ///////////////////////////////////////////////- GET ALL VALUES FROM WHEEL -/////////////////////////////////////////////////////////////
+
+  if (digitalRead(neutralPin) == 0){
+    neutral = true;
+  }
+  if (digitalRead(pitPin) == 0){
+    pit = !pit;
+  }
+  if (digitalRead(manualPin) == 0){
+    transmittionMan = true;
+  }
+  if (digitalRead(autoPin) == 0){
+    transmittionMan = false;
+  }
+
+  if (digitalRead(upshiftPin) == 0 && gear < 7) { 
+    gear++;
+  } else if (digitalRead(downshiftPin) == 0 && gear > 1) {
+    gear--;
+  }
+
+  if (neutral){
+    gear = 0;
+    agear = 0;
+  }
+  
+  prestrat = strat;
+  prestrim = strim;
+  prebrbal = brbal;
+
+  strat = map(analogRead(stratPin), 0, 1023, 1, 10);
+  strim = map(analogRead(strimPin), 0, 1023, 0, 11) - 5;
+  brbal = map(analogRead(brbalPin), 0, 1023, 0, 11) - 5;
+
+  accelPer = map(analogRead(accelPin), 0, 240, 0, 100);
+  breakPer = map(analogRead(breakPin), 0, 260, 0, 100);
+
+  accelPer = accelPer/100;
+  breakPer = breakPer/100;
+
+  ///////////////////////////////////////////////- PROCESS DATA -//////////////////////////////////////////////////////////////
+  /*
+  
+  if(gear == 0){
+    lcd.clear(); // Clear the display only once new data is complete
+    lcd.setCursor(0, 0);
+    lcd.print("Neutral"); // Display the received message
+    lcd.setCursor(0, 1);
+    lcd.print(gear); // Display the received message
+  }
+
+  if(gear == 1){
+    lcd.clear(); // Clear the display only once new data is complete
+    lcd.setCursor(0, 0);
+    lcd.print(accelPer); // Display the received message
+    lcd.setCursor(0, 1);
+    lcd.print(breakPer); // Display the received message
+  }
+  else if (gear == 2){
+    lcd.clear(); // Clear the display only once new data is complete
+    lcd.setCursor(0, 0);
+    lcd.print(angle); // Display the received message
+    lcd.setCursor(0, 1);
+    lcd.print(strat); // Display the received message
+  }
+  else if (gear == 3){
+    lcd.clear(); // Clear the display only once new data is complete
+    lcd.setCursor(0, 0);
+    lcd.print(strim); // Display the received message
+    lcd.setCursor(0, 1);
+    lcd.print(brbal); // Display the received message
+  }
+  else if (gear == 4){
+    lcd.clear(); // Clear the display only once new data is complete
+    lcd.setCursor(0, 0);
+    lcd.print(transmittionMan); // Display the received message
+    lcd.setCursor(0, 1);
+    lcd.print(pit); // Display the received message
+  }
+  
+  */
+
+/////////////////////////////////////////////////- GET SPEED -////////////////////////////////////////////////////////////////////////////////////
+
+  if(neutral){
+    if (analogRead(breakPin) > 5){ 
+      speed -= (breakPer) * (brakeing + brbal);
+    }
+    
+    if (digitalRead(upshiftPin) == 0) { 
+        neutral = false;
+        agear = 1;
+    }
+
+    speed -= engineBraking;
+
+    if (speed < settings[0][0]){
+      speed = settings[0][0];
+    }
+  }
+
+  else if (!neutral) {
+    if (!transmittionMan){
+      speed += ((settings[agear][2] + stratList[strat][1])* accelPer);
+
+      if (speed > (settings[7][1] + stratList[strat][0])){
+        speed = (settings[7][1] + stratList[strat][0]);
+      }
+
+      if (speed >= settings[agear][0] && speed <= settings[agear][1]){ // If speed is in gear range do nothing
+        speed -= engineBraking;
+      }
+    
+      if (speed < (settings[agear][0] + ((agear - 1) * (stratList[strat][0]/7))) && agear > 1){ // If speed too low, reduce gear
+        agear--;
+      }
+      else if(speed > (settings[agear][1] + ((agear) * (stratList[strat][0]/7))) && agear < 7){ //If speed is higher, increase gear
+        agear++;
+      }
+
+      if (analogRead(breakPin) > 5){ 
+        speed -= (breakPer) * (brakeing + brbal);
+      }
+
+      if (accelPer > 0.05 && agear == 0){
+        agear = 1;
+      }
+
+      if (pit){
+        if (speed > 1440){
+          speed = 1440;
+        }
+      }
+    }
+
+  }
+
+  if (speed < 1402){
+    speed = 1405;
+    agear = 0;
+  }
+  if (speed > 2000){
+    speed = 2000;
+  }
+
+/////////////////////////////////////////////////- Set data in stuct and send -/////////////////////////////////////////////////////////////////////////////////////////
+
+  data.speed = speed;
+  data.steering = angle;
+
+  radio.write(&data, sizeof(Data_Pack));
+
+  lcd.clear(); // Clear the display only once new data is complete
+  lcd.setCursor(0, 0);
+  lcd.print(speed); // Display the received message
+  lcd.setCursor(0, 1);
+  lcd.print(angle); // Display the received message
+
+ /* Serial.print(speed);
+  Serial.print(" | ");
+  Serial.print(accelPer);
+  Serial.print(" | ");
+  Serial.print(agear);
+  Serial.print(" | ");
+  Serial.print(neutral);
+  Serial.println(" | ");
+*/
+
+}
